@@ -1,0 +1,70 @@
+.main{
+	width:90%;
+	margin: 0 auto;
+}
+.head{
+	width:90%;
+	margin: 0 auto;
+	padding-left: 17px;
+}
+.input input{
+	outline-style: none ;
+	border: 1;
+	border-radius: 14px;
+	padding: 13px 14px;
+	width: 90%;
+	font-size: 15px;
+}
+.input select{
+	outline-style: none ;
+	border: 1;
+	border-radius: 14px;
+	padding: 13px 14px;
+	width: 90%;
+	font-size: 15px;
+	background-color: white;
+}
+.input textarea{
+	outline-style: none ;
+	border:1;
+	border-radius: 22px;
+	padding: 10px;
+	resize: none;
+	width: 91%;
+	font-size: 15px;
+}
+.b input{
+	outline-style: none ;
+	border: 1;
+	border-radius: 14px;
+	padding: 13px 14px;
+	font-size: 16px;
+}
+.usrimg a{
+	text-decoration: none;
+	color: black;
+}
+.usrimg a:visited{
+	text-decoration: none;
+	color: black;
+}
+.usrimg a:hover {
+	text-decoration: none;
+	color:black;
+	}
+.usrimg a:active{
+	text-decoration:none;
+	color:black;
+}
+.foot {
+	text-align: center;
+}
+.password{
+	text-align: center;
+	width: 40%;
+}
+
+
+.tophome{
+	text-align: right;
+}

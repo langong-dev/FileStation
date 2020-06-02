@@ -23,3 +23,9 @@ Test server
   click `管理`
 
 Enjoy!
+
+# Use
+
+- `./` Home page
+- `?type=admin` Config page
+- `?type=view` View files

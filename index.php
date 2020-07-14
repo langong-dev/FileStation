@@ -1,3 +1,6 @@
+<html>
+  <head>
+    <p hidden="hidden">
 <?php
 
 include "get.php";
@@ -6,14 +9,29 @@ $count = $fileio->getline ("count", 1);
 $type = $_GET['type'];
 $name = $_GET['name'];
 $err  = $_GET['err'];
+$c2url = $fileio->getline ("url/$name", 1);
 
 $tit = "FileStation";
-if ($type == "list") $tit = "列表 | ".$tit;
-if ($type == "view") $tit = $fileio->getline("link/$name",1)." | ".$tit;
+//if ($type == "list") $tit = "列表 | ".$tit;
+
+
 if ($type == "view" && ($name <= 0 || $name > $fileio->getline("count",1)))
 {
   #include "404.php";
-  $tit = "404 ".$tit;
+  $tit = "404 | ".$tit;
+}
+else if ($type == "view" && $fileio->getline("link/$name",1) == "")
+{
+  #include "404.php";
+  $tit = "404 | ".$tit;
+}
+else if ($type == "view") $tit = $fileio->getline("link/$name",1)." | ".$tit;
+else if ($type == "admin") $tit = "Admin | ".$tit;
+else if ($type == ""){
+  $tit = $tit;
+}
+else{
+  $tit = "404 | ".$tit;
 }
 
 function boxstart(){
@@ -62,8 +80,7 @@ function boxstart(){
 
 ?>
 
-<html>
-  <head>
+    </p>
     <title><?php echo $tit ?></title>
     <?php boxstart(); ?>
     <link rel="stylesheet" type="text/css" href="main.css">
@@ -96,12 +113,13 @@ function boxstart(){
           echo "</table></div></center>";
         }
         else if ($type == "view"){
-          if (!$name <= 0 && $name <= $fileio->getline("count",1)){
+          if (!$name <= 0 && $name <= $fileio->getline("count",1) && trim($fileio->getline("link/$name",1))!=""){
+            $ccurl = str_replace("file/","",$c2url);
             echo "<center><h2>".$fileio->getline("link/$name",1)."</h2>";
             echo "<br>".trim($fileio->getline("des/$name",1))."<br><br><br><br>";
             echo "<div class=\"b\">";
             echo "<a id=\"load\" href=\"".trim($fileio->getline("url/$name",1));
-            echo "\" download=\"FileStation-".trim($fileio->getline("link/$name",1))."\">";
+            echo "\" download=\"".trim($fileio->getline("link/$name",1))."-$ccurl\">";
             echo "<input type=\"button\" value=\"下载\"></a></div>";
           }
           else {
@@ -121,7 +139,7 @@ function boxstart(){
     </div>
     <div class="foot usrimg">
       <br>
-      <span>由 <b><a href="https://langong-dev.github.io">LanGong</a> &bull; <a href="http://victorwoo.synology.me:666">5+1Center</a></b> 特别推出</span><br>
+      <span>由 <b><a href="https://langong-dev.github.io">LanGong</a> &bull; <a href="http://victorwoo.synology.me:516/">5+1Center</a></b> 特别推出</span><br>
     </div>
     <?php boxend(); ?>
     <br>
